@@ -15,6 +15,9 @@ RUN cd $HOME \
     && mv $HOME/wildfly-$WILDFLY_VERSION $JBOSS_HOME \
     && rm wildfly-$WILDFLY_VERSION.tar.gz
 
+# Move app do deploy folder
+COPY apps/spring-music.war $JBOSS_HOME/standalone/deployments/spring-music.war
+
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
