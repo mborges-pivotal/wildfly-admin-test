@@ -15,8 +15,6 @@ RUN cd $HOME \
     && mv $HOME/wildfly-$WILDFLY_VERSION $JBOSS_HOME \
     && rm wildfly-$WILDFLY_VERSION.tar.gz
 
-RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
-
 # Ensure signals are forwarded to the JVM process correctly for graceful shutdown
 ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
@@ -27,3 +25,5 @@ EXPOSE 80
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
 CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0:8080"]
+
+RUN /opt/jboss/wildfly/bin/add-user.sh admin admin --silent
