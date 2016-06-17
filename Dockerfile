@@ -20,9 +20,7 @@ ENV LAUNCH_JBOSS_IN_BACKGROUND true
 
 # Expose the ports we're interested in
 EXPOSE 8080
-EXPOSE 80
 
 # Set the default command to run on boot
 # This will boot WildFly in the standalone mode and bind to all interface
-RUN /opt/jboss/wildfly/bin/add-user.sh admin Admin#70365 --silent
-CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
